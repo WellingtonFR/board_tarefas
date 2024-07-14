@@ -1,9 +1,9 @@
-import Head from "next/head";
+import Head from 'next/head';
 
-import styles from "@/styles/Home.module.css";
-import Image from "next/image";
+import styles from '@/styles/Home.module.css';
+import Image from 'next/image';
 
-import logoImg from "../../public/assets/hero.png"
+import logoImg from '../../public/assets/hero.png';
 
 export default function Home() {
   return (
@@ -14,9 +14,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-      <div className={styles.logoContent}>
-        <Image src={logoImg} alt="Logo" className={styles.logo} priority/>
-      </div>
+        <div className={styles.logoContent}>
+          <Image src={logoImg} alt="Logo" className={styles.logo} priority />
+        </div>
         <h1 className={styles.title}>Sistema para organização de suas tarefas</h1>
 
         <div className={styles.infoContent}>

@@ -1,0 +1,79 @@
+.header {
+  width: 100%;
+  height: 76px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+.content {
+  padding: 0px 18px;
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+
+  .loginButton {
+    margin-left: 20px;
+  }
+}
+
+.loginButton {
+  width: 100px;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: var(--button-color-hover);
+  }
+}
+
+.dashboardButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  background-color: #525252;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-left: 15px;
+
+  &:hover {
+    background-color: #6e6e6e;
+  }
+}
+
+.logo {
+  color: #ffffff;
+  font-size: 32px;
+}
+
+.logo span {
+  color: #00d2d6;
+  padding-right: 5px;
+}
+
+.logo span:first-child,
+.logo span:last-child {
+  color: rgb(227, 0, 182);
+}

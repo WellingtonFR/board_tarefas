@@ -1,6 +1,6 @@
 .main {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 100px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,27 +8,25 @@
 }
 
 .title {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .logo {
   max-width: 480px;
   object-fit: contain;
-  width: auto;
-  height: auto;
 }
 
 .infoContent {
   display: flex;
 
   .box {
-    background-color: rgb(0, 129, 129);
+    background-color: var(--button-color);
     padding: 10px;
     border-radius: 10px;
     margin: 30px 10px;
   }
-  
+
   .box:hover {
-    background-color: rgb(0, 167, 167);
+    background-color: var(--button-color-hover);
   }
 }
