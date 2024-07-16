@@ -78,3 +78,36 @@
 .logo span:last-child {
   color: rgb(227, 0, 182);
 }
+
+.profilePicture {
+  border-radius: 50px;
+  transition: all 0.5s;
+  border: 2px solid #00d2d6;
+}
+
+.textLogout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  font-size: 14px;
+}
+
+.containerLogout:hover .profilePicture {
+  opacity: 0;
+}
+
+.containerLogout:hover .textLogout {
+  display: block;
+}
+
+.containerLogout {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  position: relative;
+  display: inline-block;
+  background-color: #10fbff;
+  color: black;
+}

@@ -12,6 +12,8 @@
 }
 
 .logo {
+  width: auto;
+  height: auto;
   max-width: 480px;
   object-fit: contain;
 }
