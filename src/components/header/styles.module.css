@@ -41,6 +41,11 @@
   &:hover {
     background-color: var(--button-color-hover);
   }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    width: 100px;
+  }
 }
 
 .dashboardButton {
@@ -62,11 +67,22 @@
   &:hover {
     background-color: #6e6e6e;
   }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    margin-left: 5px;
+  }
 }
 
 .logo {
   color: #ffffff;
   font-size: 32px;
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
+
+
 }
 
 .logo span {
@@ -83,6 +99,7 @@
   border-radius: 50px;
   transition: all 0.5s;
   border: 2px solid #00d2d6;
+  border: none;
 }
 
 .textLogout {

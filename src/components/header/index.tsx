@@ -8,11 +8,11 @@ export function Header() {
   const { data: session, status } = useSession();
   const [buttonLogoutText, setButtonLogoutText] = useState(session?.user?.name?.split(' ')[0] || 'Sair');
 
-  useEffect(() => {
-    if (session) {
-      handleMouseOutLogoutButton();
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session) {
+  //     handleMouseOutLogoutButton();
+  //   }
+  // }, [session]);
 
   const handleLogin = () => {
     signIn('google');
@@ -50,7 +50,7 @@ export function Header() {
         ) : session ? (
           <div className={styles.containerLogout} onClick={() => signOut()}>
             <Image
-              src="https://lh3.googleusercontent.com/a/ACg8ocIAtaLHV8E0b5qh-R-rB3S-KTu7j1fSLQqkFE1Kp7M15dNiHtKq=s96-c"
+              src={session.user?.image as string}
               alt="Imagem de perfil do Gogle"
               id="profilePicture"
               className={styles.profilePicture}
