@@ -86,9 +86,7 @@
   margin-bottom: 14px;
   line-height: 150%;
   display: flex;
-  border: 1px solid #909090;
-  border-radius: 4px;
-  padding: 14px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -99,16 +97,21 @@
 .tagContainer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
 }
 
 .tag {
+  display: inline-block;
   background-color: #3183ff;
-  padding: 2px 6px;
+  padding: 4px 8px;
   color: white;
   border-radius: 4px;
   font-size: 12px;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: #0d6bf8;
+  }
 }
 
 .shareButton {
@@ -121,12 +124,13 @@
 .taskContent {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
+  padding: 10px;
 }
 
 .taskContent {
   white-space: pre-wrap;
+  text-align: justify;
 }
 
 .taskContent a {
@@ -134,13 +138,25 @@
 }
 
 .trashButton {
+  margin-left: auto;
   cursor: pointer;
   background: transparent;
   border: 0;
-  margin: 0 8px;
 }
 
 .trashIcon:hover {
   color: #ff3042 !important;
   transform: scale(1.1);
+}
+
+.taskHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f4f4f4;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid rgb(211, 211, 211);
 }

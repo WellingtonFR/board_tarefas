@@ -18,6 +18,8 @@ import {
   onSnapshot,
   DocumentData,
   QuerySnapshot,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 
 interface HomeProps {
@@ -42,11 +44,7 @@ export default function Dashboard({ user }: HomeProps) {
   useEffect(() => {
     const loadTarefas = (async () => {
       const tarefasRef = collection(db, "tarefas");
-      const q = query(
-        tarefasRef,
-        orderBy("createdAt", "desc"),
-        where("user", "==", user?.email)
-      );
+      const q = query(tarefasRef, orderBy("createdAt", "desc"), where("user", "==", user?.email));
 
       onSnapshot(q, (snapshot: QuerySnapshot<DocumentData>) => {
         let lista = [] as taskProps[];
@@ -91,6 +89,15 @@ export default function Dashboard({ user }: HomeProps) {
     }
   }
 
+  async function handleshare(id: string) {
+    await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/task/${id}/`);
+  }
+
+  async function handleDeleteTask(id: string) {
+    const docRef = doc(db, "tarefas", id);
+    await deleteDoc(docRef);
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -106,18 +113,11 @@ export default function Dashboard({ user }: HomeProps) {
               <Textarea
                 placeholder="Digite aqui sua tarefa ..."
                 value={input}
-                onChange={(event: ChangeEvent<HTMLTextAreaElement>) =>
-                  setInput(event.target.value)
-                }
+                onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setInput(event.target.value)}
               />
 
               <div className={styles.checkboxArea}>
-                <input
-                  type="checkbox"
-                  className={styles.checkbox}
-                  checked={publicTask}
-                  onChange={handleChangePublic}
-                />
+                <input type="checkbox" className={styles.checkbox} checked={publicTask} onChange={handleChangePublic} />
                 <label>Deixar tarefa pública?</label>
               </div>
 
@@ -133,30 +133,37 @@ export default function Dashboard({ user }: HomeProps) {
 
           {tasks.map((item) => (
             <article className={styles.task} key={item.id}>
-              {item.public && (
-                <div className={styles.tagContainer}>
-                  <label className={styles.tag}>PÚBLICO</label>
-                  <button className={styles.shareButton}>
-                    <FiShare2 size={22} color="#3183ff" />
-                  </button>
-                </div>
-              )}
+              <div className={styles.taskHeader}>
+                {item.public == true ? (
+                  <div className={styles.tagContainer}>
+                    {item.public === true ? (
+                      <Link href={`/task/${item.id}`}>
+                        <label className={styles.tag}>PÚBLICO</label>
+                      </Link>
+                    ) : (
+                      <label className={styles.tag}>PÚBLICO</label>
+                    )}
 
-              <div className={styles.taskContent}>
-                {item.public === true ? (
-                  <Link href={`/task/${item.id}`}>
-                    <p>{item.tarefa}</p>
-                  </Link>
+                    <button className={styles.shareButton}>
+                      <FiShare2 size={22} color="#3183ff" />
+                    </button>
+                  </div>
                 ) : (
-                  <p>{item.tarefa}</p>
+                  <div className={styles.tagContainer}></div>
                 )}
+
                 <button className={styles.trashButton}>
                   <FaTrash
                     size={24}
                     color="#ea3140"
                     className={styles.trashIcon}
+                    onClick={() => handleDeleteTask(item.id)}
                   />
                 </button>
+              </div>
+
+              <div className={styles.taskContent}>
+                <p>{item.tarefa}</p>
               </div>
             </article>
           ))}
