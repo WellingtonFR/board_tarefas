@@ -59,12 +59,23 @@
   font-size: 18px;
   margin-top: 20px;
   cursor: pointer;
+  transition: 0.3s;
 
   &:hover {
     background-color: var(--button-color-hover);
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgb(84, 84, 84);
+    opacity: 0.5;
+  }
+
   @media (max-width: 600px) {
     line-height: 10px;
   }
+}
+
+.commentsContainer {
+  width: 100%;
 }
