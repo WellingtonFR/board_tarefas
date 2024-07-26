@@ -176,7 +176,7 @@ export default function Dashboard({ user }: HomeProps) {
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
 
-  console.log(session?.user?.email);
+  console.log(session);
 
   // if (!session?.user) {
   //   return {
