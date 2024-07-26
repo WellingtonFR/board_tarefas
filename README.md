@@ -6,8 +6,8 @@ Para teste pode se utilizar o comando abaixo
 
 ```bash
 npm run dev
-# ou
+ou
 yarn dev
-
-E Abrir o endereço [http://localhost:3000](http://localhost:3000) no navegador para exibição \d\o resultado.
 ```
+
+E Abrir o endereço open [http://localhost:3000](http://localhost:3000) no navegador para exibição da página.
