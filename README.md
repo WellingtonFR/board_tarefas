@@ -10,4 +10,4 @@ ou
 yarn dev
 ```
 
-E Abrir o endereço open [http://localhost:3000](http://localhost:3000) no navegador para exibição da página.
+E Abrir o endereço [http://localhost:3000](http://localhost:3000) no navegador para exibição da página.
