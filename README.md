@@ -9,5 +9,5 @@ npm run dev
 # ou
 yarn dev
 
-E Abrir o endereço [http://localhost:3000](http://localhost:3000) no navegador para exibição do resultado.
+E Abrir o endereço [http://localhost:3000](http://localhost:3000) no navegador para exibição \d\o resultado.
 ```
