@@ -90,7 +90,20 @@ export default function Dashboard({ user }: HomeProps) {
   }
 
   async function handleshare(id: string) {
-    await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/task/${id}/`);
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Compartilhar tarefa pública",
+          text: "Seleciona um aplicativo para enviar o link de compartilhamento",
+          url: `${process.env.NEXT_PUBLIC_URL}/task/${id}/`,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      await navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_URL}/task/${id}/`);
+      alert("Link de compartilhamento copiado para a área de transferência");
+    }
   }
 
   async function handleDeleteTask(id: string) {
@@ -144,7 +157,7 @@ export default function Dashboard({ user }: HomeProps) {
                       <label className={styles.tag}>PÚBLICO</label>
                     )}
 
-                    <button className={styles.shareButton}>
+                    <button className={styles.shareButton} onClick={() => handleshare(item.id)}>
                       <FiShare2 size={22} color="#3183ff" />
                     </button>
                   </div>

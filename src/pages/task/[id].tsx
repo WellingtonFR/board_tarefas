@@ -1,12 +1,12 @@
 import Head from "next/head";
 import styles from "./styles.module.css";
 import { GetServerSideProps } from "next";
-
 import { db } from "@/services/firebaseConnection";
-import { doc, collection, query, where, getDoc, addDoc, getDocs } from "firebase/firestore";
+import { doc, collection, query, where, getDoc, addDoc, getDocs, deleteDoc } from "firebase/firestore";
 import { Textarea } from "@/components/textarea";
 import { useSession } from "next-auth/react";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { FaTrash } from "react-icons/fa";
 
 interface TaskProps {
   item: {
@@ -47,9 +47,31 @@ export default function Task({ item, allComments }: TaskProps) {
         taskId: item?.taskId,
       });
 
+      const data = {
+        id: docRef.id,
+        comment: input,
+        created: new Date(),
+        user: session?.user.email,
+        name: session?.user.name,
+        taskId: item?.taskId,
+      };
+
+      setComments((previousItems) => [...previousItems, data]);
       setInput("");
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async function handleDeleteComment(id: string) {
+    try {
+      const docRef = doc(db, "comments", id);
+      await deleteDoc(docRef);
+
+      const commentsToMaintain = comments.filter((item) => item.id !== id);
+      setComments(commentsToMaintain);
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -88,6 +110,14 @@ export default function Task({ item, allComments }: TaskProps) {
 
         {comments.map((item) => (
           <article key={item.id} className={styles.comment}>
+            <div className={styles.headComment}>
+              <label className={styles.commentsLabel}>{item.name}</label>
+              {item.user === session?.user?.email && (
+                <button className={styles.buttonTrash} onClick={() => handleDeleteComment(item.id)}>
+                  <FaTrash size={18} color="#EA3140" className={styles.trashIcon} />
+                </button>
+              )}
+            </div>
             <p>{item.comment}</p>
           </article>
         ))}

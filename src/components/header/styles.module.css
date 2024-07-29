@@ -81,8 +81,6 @@
   @media (max-width: 600px) {
     font-size: 18px;
   }
-
-
 }
 
 .logo span {
@@ -97,7 +95,7 @@
 
 .profilePicture {
   border-radius: 50px;
-  transition: all 0.5s;
+  transition: all 0.3s;
   border: 2px solid #00d2d6;
   border: none;
 }
@@ -112,11 +110,13 @@
 }
 
 .containerLogout:hover .profilePicture {
-  opacity: 0;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .containerLogout:hover .textLogout {
   display: block;
+  cursor: pointer;
 }
 
 .containerLogout {
@@ -125,6 +125,7 @@
   border-radius: 50px;
   position: relative;
   display: inline-block;
-  background-color: #10fbff;
-  color: black;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  background-color: rgba(6, 63, 64, 0.7);
 }
